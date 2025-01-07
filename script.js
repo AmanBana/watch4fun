@@ -3,7 +3,7 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
     
     const apiKey = '4d6a821c'; // Replace with your actual OMDb API key
     const movieTitle = document.getElementById('movie-title').value;
-    const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`; // Ensure this is HTTPS
+    const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`; // Use HTTPS
 
     fetch(url)
         .then(response => {
@@ -16,7 +16,6 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
                 document.getElementById('movie-details').innerHTML = `
                     <h2>${data.Title}</h2>
                     <img src="${data.Poster}" alt="${data.Title} Poster">
-                    <p><strong>Year:</strong> ${data.Year}</p>
                     <p><strong>Rated:</strong> ${data.Rated}</p>
                     <p><strong>Released:</strong> ${data.Released}</p>
                     <p><strong>Runtime:</strong> ${data.Runtime}</p>
@@ -25,13 +24,8 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
                     <p><strong>Writer:</strong> ${data.Writer}</p>
                     <p><strong>Actors:</strong> ${data.Actors}</p>
                     <p><strong>Plot:</strong> ${data.Plot}</p>
-                    <p><strong>Language:</strong> ${data.Language}</p>
-                    <p><strong>Country:</strong> ${data.Country}</p>
                     <p><strong>IMDb Rating:</strong> ${data.imdbRating}</p>
-                    <p><strong>IMDb Votes:</strong> ${data.imdbVotes}</p>
-                    <p><strong>Type:</strong> ${data.Type}</p>
                     <p><strong>Box Office:</strong> ${data.BoxOffice}</p>
-                    <p><strong>Production:</strong> ${data.Production}</p>
                 `;
                 document.getElementById('movie-details').classList.remove('hidden');
             } else {
