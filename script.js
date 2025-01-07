@@ -8,6 +8,7 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Log the API response for debugging
             if (data.Response === 'True') {
                 document.getElementById('movie-details').innerHTML = `
                     <h2>${data.Title}</h2>
