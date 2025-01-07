@@ -3,12 +3,15 @@ document.getElementById('search-form').addEventListener('submit', function(e) {
     
     const apiKey = '4d6a821c'; // Replace with your actual OMDb API key
     const movieTitle = document.getElementById('movie-title').value;
-    const url = `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`;
+    const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`; // Use HTTPS
 
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            console.log('Status Code:', response.status);
+            return response.json();
+        })
         .then(data => {
-            console.log(data); // Log the API response for debugging
+            console.log('Response Data:', data); // Log the API response for debugging
             if (data.Response === 'True') {
                 document.getElementById('movie-details').innerHTML = `
                     <h2>${data.Title}</h2>
